@@ -89,7 +89,9 @@ def aq_reader(path):
             name = lines[3].split(":")[1].split(",")[0].strip()
             print(name)
             param = lines[6].split(":")[1].split(",")[0].strip()
-        
+            units = lines[5].split(":")[1].split(",")[0].strip()
+            print("Units : " + units) 
+            
         else: 
             print("WRONG FILE OR FORMAT!!!")
             pass
