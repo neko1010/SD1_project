@@ -245,16 +245,37 @@ def plot(gage_dict):
     
     params = ["gageheight_ft", "discharge_cfs", "precip_in", "temp_c", "do_mgL", "pH_su",
             "cond_umhos", "turb_ntu", "velocity_ft_s", "nitrate_mgL"]
-    
+
+    y_labels = ["Gage height (ft)", "Discharge (cfs)", "Precipitation (in)", "Temperature (deg C)",
+            "Dissolved Oxygen (mg/L)", "pH", "Specific Conductance @ 25 deg C (uS/cm)",
+            "Turbidity (FNU)", "Velocity (ft/s)", "Nitrate (mg/L)"]
+
     for param in params:
         for key in gage_dict:
+            ## Matching dict key to appropriate y axis label
+            for i in range(len(params)):
+                if param == params[i]:
+                    y_label = y_labels[i] 
             if param == key:
                 try:
                 
-                    plt.plot(gage_dict["dt_range"], gage_dict[param])
-                    plt.xlabel('Date')
-                    plt.ylabel(param)
-                    plt.savefig("figs/" + param + ".png")
+                    fig = plt.figure()
+                    ax = fig.add_subplot(111)
+                    ax.plot(gage_dict["dt_range"], gage_dict[param])
+                    plt.xlabel('Date' )
+                    ## Rotating x axis labels
+                    plt.xticks( rotation = 45)
+                    ## Gridlines on
+                    ax.grid(True)
+                    ## Text to include summary stats >> transform = ax.transAxes places text in relative location
+                    ## based on (1,1) as top right corner
+                    ax.text(0.75, 0.8, "Mean: " + str(round(np.nanmean(gage_dict[param]), 2)) + 
+                        "\nMin: " + str(round(np.nanmin(gage_dict[param]),2)) + 
+                        "\nMax: " + str(round(np.nanmax(gage_dict[param]),2)), 
+                        transform = ax.transAxes, bbox = dict(fc = 'white'))
+                    plt.ylabel(y_label)
+                    fig.subplots_adjust(bottom = 0.2)
+                    fig.savefig("figs/" + param + ".png")
                     plt.close()
             
                 except:
