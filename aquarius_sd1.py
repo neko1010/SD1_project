@@ -94,7 +94,6 @@ def aq_reader(path):
             
         else: 
             print("WRONG FILE OR FORMAT!!!")
-            pass
     
     ## Dictionary for AQUARIUS file
     data_dict = {"station" : station, "name": name, "param": param, 
@@ -240,9 +239,6 @@ def plot(gage_dict):
     if not "figs" in os.listdir("."):
         os.mkdir("figs")
 
-    else:
-        pass 
-    
     params = ["gageheight_ft", "discharge_cfs", "precip_in", "temp_c", "do_mgL", "pH_su",
             "cond_umhos", "turb_ntu", "velocity_ft_s", "nitrate_mgL"]
 
@@ -267,8 +263,9 @@ def plot(gage_dict):
                     plt.xticks( rotation = 45)
                     ## Gridlines on
                     ax.grid(True)
-                    ## Text to include summary stats >> transform = ax.transAxes places text in relative location
-                    ## based on (1,1) as top right corner
+                    ## Text to include summary stats
+                    ## transform = ax.transAxes places text in relative location
+                    ## with (1,1) as top right corner
                     ax.text(0.75, 0.8, "Mean: " + str(round(np.nanmean(gage_dict[param]), 2)) + 
                         "\nMin: " + str(round(np.nanmin(gage_dict[param]),2)) + 
                         "\nMax: " + str(round(np.nanmax(gage_dict[param]),2)), 
