@@ -278,7 +278,6 @@ def plot(gage_dict):
                 except:
                     ## For instances where param values are entirely np.nan vals
                     print("Unable to plot " + param)
-                    pass
 def main():
 
     ## First command line argument following program - water year - ex. 2017
