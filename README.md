@@ -13,6 +13,9 @@ Designed to be run from the command line, the program accepts **three additional
 Also output from this tool are summary statistics printed to the command prompt and 
 time series plots for each parameter file parsed.
 
+A GUI version of the software has been added for easy use!
+
 Example plot for discharge:
 
 ![Licking River discharge measurments](https://github.com/neko1010/SD1_project/blob/master/figs_ex/discharge_cfs.png "Licking River Discharge")
+
