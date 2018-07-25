@@ -342,7 +342,7 @@ if __name__ == "__main__":
     wy_entry.grid(row = 1, column = 1)
 
     ## USGS logo- note grid methods- column span, sticky (east, west)
-    logo = PhotoImage(file = "USGSlogo_gre_sm.png")
+    logo = PhotoImage(file = "logo/USGSlogo_gre_sm.png")
     insert_logo = Label(root, image = logo) 
     insert_logo.grid(row = 0, column = 0, columnspan = 3, sticky = EW)
 
@@ -403,8 +403,7 @@ if __name__ == "__main__":
         else:
             gage_dict = fill_empties(gage_data, data_dict)
             prompt = data_dict["param"] + " Processed!"
-            ## Different geometry layout method- .pack()
-            img = PhotoImage(file =  "USGSlogo_gre_sm.png")
+            img = PhotoImage(file =  "logo/USGSlogo_gre_sm.png")
             
             logo = Label(root, image = img)
             logo.grid(row = 0, column = 0, columnspan = 2)
