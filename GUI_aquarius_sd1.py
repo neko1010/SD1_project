@@ -299,7 +299,8 @@ def outputfile():
     Selects name and path of output .csv file.
     """
     global out_path
-    filepath = filedialog.asksaveasfilename(filetypes = (("CSV","*.csv"),("all files","*.*")))
+    filepath = filedialog.asksaveasfilename(defaultextension = ".csv",
+            filetypes = (("CSV","*.csv"),("all files","*.*")))
     out_path.set(filepath)
     return out_path
 
